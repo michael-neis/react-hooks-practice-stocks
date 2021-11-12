@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar() {
+function SearchBar({ sortStocks, filterStocks, handleReset, radioState }) {
   return (
     <div>
       <strong>Sort by:</strong>
@@ -9,8 +9,9 @@ function SearchBar() {
           type="radio"
           value="Alphabetically"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={radioState.Alphabetically}
+          onChange={sortStocks}
+          style={{cursor: 'pointer'}}
         />
         Alphabetically
       </label>
@@ -19,20 +20,22 @@ function SearchBar() {
           type="radio"
           value="Price"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={radioState.Price}
+          onChange={sortStocks}
+          style={{cursor: 'pointer'}}
         />
         Price
       </label>
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={filterStocks} style={{cursor: 'pointer'}}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
         </select>
       </label>
+      <button onClick={handleReset} style={{cursor: 'pointer', marginLeft: '7px'}}>Reset</button>
     </div>
   );
 }
